@@ -8,7 +8,7 @@ import Image from "next/image";
 import { GalleryCardList } from "@/src/components/GaleryPage/GaleryCardlist";
 import { GetServerSideProps, NextPage } from "next";
 import { IntroServiceData } from "@/src/types";
-import { fetchIntroCategories } from "./api/services/fetchIntroCategories";
+import { fetchIntroCategories } from "./pages/api/services/fetchIntroCategories";
 
 interface GalleryPageProps {
   categories: IntroServiceData[];

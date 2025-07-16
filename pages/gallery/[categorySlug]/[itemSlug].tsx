@@ -1,7 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { IntroServiceInformation } from "@/src/types";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "@/src/components/layout/Header";
 import Footer from "@/src/components/layout/Footer";
 import Container from "@/src/components/layout/Container";
