@@ -4,6 +4,9 @@ import Image from "next/image";
 import Header from "@/src/components/layout/Header";
 import Footer from "@/src/components/layout/Footer";
 import Container from "@/src/components/layout/Container";
+
+import React, { useState } from "react";
+import { ImageModal } from "@/src/components/modals/ImageModal";
 import { getBanner } from "@/pages/api/services/fetchBanner";
 
 const slugify = (text: string) => {
@@ -22,6 +25,8 @@ interface GalleryItemPageProps {
 }
 
 const GalleryItemPage: NextPage<GalleryItemPageProps> = ({ item }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (!item) {
     return (
       <>
@@ -46,35 +51,38 @@ const GalleryItemPage: NextPage<GalleryItemPageProps> = ({ item }) => {
 
       <Container>
         <div className="py-20">
-        <h1 className="text-3xl md:text-4xl font-medium text-gray-800 mb-8 md:mb-12">
-          {item.title}
-        </h1>
+          <h1 className="text-3xl md:text-4xl font-medium text-gray-800 mb-8 md:mb-12">
+            {item.title}
+          </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {images.map((src, index) => (
-            <div
-              key={index}
-              className="overflow-hidden rounded-lg shadow-md aspect-square"
-            >
-              <Image
-                src={src}
-                alt={`${item.title} - şəkil ${index + 1}`}
-                width={600}
-                height={600}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {images.map((src, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-lg shadow-md aspect-square cursor-pointer"
+                onClick={() => setIsModalOpen(true)} 
+              >
+                <Image
+                  src={src}
+                  alt={`${item.title} - şəkil ${index + 1}`}
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-
-        </div>
-
-        
       </Container>
 
       <Container>
         <Footer />
       </Container>
+
+      <ImageModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </>
   );
 };
@@ -87,14 +95,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
 
     const categoryData = await getBanner(categorySlug);
-
     const item = categoryData.information.find(
       (info) => slugify(info.title || "") === itemSlug
     );
 
     return {
       props: {
-        item: item || null, 
+        item: item || null,
       },
     };
   } catch (error) {
