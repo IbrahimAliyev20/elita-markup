@@ -1,4 +1,3 @@
-// src/components/Bathroom/Products.tsx
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";

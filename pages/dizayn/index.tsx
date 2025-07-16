@@ -13,7 +13,7 @@ import { getBanner } from "../api/services/fetchBanner";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
-import { fetchIntroServices } from "../api/services/fetchIntroCategories";
+import { fetchIntroCategories } from "../api/services/fetchIntroCategories";
 
 interface InformationItem {
   title: string;
@@ -72,7 +72,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const slug = "dizayn";
     const services = await fetchServices(lang);
     const bannerData = await getBanner(slug, lang);
-    const categories = await fetchIntroServices(lang);
+    const categories = await fetchIntroCategories(lang);
     return {
       props: {
         services,

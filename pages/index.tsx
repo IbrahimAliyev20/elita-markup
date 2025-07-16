@@ -1,6 +1,6 @@
 import IntroSection from "@/src/components/IntroSection";
 import { IntroServiceData } from "@/src/types";
-import { fetchIntroServices } from "./api/services/fetchIntroCategories";
+import { fetchIntroCategories } from "./api/services/fetchIntroCategories";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 
@@ -26,7 +26,7 @@ export default function Home({ introData }: HomeProps) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const lang = context.locale || "az";
   try {
-    const introData = await fetchIntroServices(lang);
+    const introData = await fetchIntroCategories(lang);
 
     if (!introData) {
       return {

@@ -13,7 +13,7 @@ import Hero from "@/src/components/ProjectDetailed/Hero.tsx";
 import { getSingleService } from "../api/services/fetchServices";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import { fetchIntroServices } from "../api/services/fetchIntroCategories";
+import { fetchIntroCategories } from "../api/services/fetchIntroCategories";
 
 interface ProjectDetailedProps {
   contactData: ContactData | null;
@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (
     const [contactData, serviceData, categories] = await Promise.all([
       getContactInfo(lang),
       getSingleService(slug, lang),
-      fetchIntroServices(lang),
+      fetchIntroCategories(lang),
     ]);
 
     if (!contactData || !serviceData) {
