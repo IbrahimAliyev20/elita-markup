@@ -57,7 +57,7 @@ function Header({ activeItem = "" }) {
     setIsSidebarVisible(false);
     setTimeout(() => {
       setIsMenuOpen(false);
-    }, 400); // Increased from 300ms to 400ms for smoother transition
+    }, 400); 
   };
 
   return (
@@ -205,10 +205,8 @@ function Header({ activeItem = "" }) {
         </Container>
       </div>
 
-      {/* Desktop Sidebar Menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          {/* Backdrop */}
           <div
             className={`absolute inset-0 bg-black transition-all duration-500 ease-out ${
               isSidebarVisible ? "opacity-50" : "opacity-0"
@@ -216,7 +214,6 @@ function Header({ activeItem = "" }) {
             onClick={handleSidebarClose}
           />
 
-          {/* Sidebar content */}
           <div className="absolute inset-y-0 right-0 flex max-w-full pl-10 font-archivo">
             <div
               className={`relative w-screen max-w-[300px] transform transition-all duration-500 ease-out ${
@@ -238,7 +235,6 @@ function Header({ activeItem = "" }) {
                   </button>
                 </div>
 
-                {/* Menu items */}
                 <div className="flex-1 overflow-y-auto py-6 px-4">
                   <div className="space-y-2">
                     {dropdownItems.map((item) => (

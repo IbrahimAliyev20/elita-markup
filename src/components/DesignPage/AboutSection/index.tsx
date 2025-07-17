@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -31,7 +32,6 @@ function AboutSection({ information }: AboutSectionProps) {
       const newHasOverflow = new Array(information.length).fill(false);
       textRefs.current.forEach((ref, index) => {
         if (ref) {
-          // Create a temporary element to measure the full text height
           const tempElement = document.createElement("div");
           tempElement.style.cssText = `
             position: absolute;
@@ -50,7 +50,6 @@ function AboutSection({ information }: AboutSectionProps) {
           const fullHeight = tempElement.offsetHeight;
           document.body.removeChild(tempElement);
 
-          // Get the height when clamped to 4 lines
           const lineHeight = parseInt(window.getComputedStyle(ref).lineHeight);
           const clampedHeight = lineHeight * 4;
 
@@ -60,7 +59,6 @@ function AboutSection({ information }: AboutSectionProps) {
       setHasOverflow(newHasOverflow);
     };
 
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(checkOverflow, 100);
 
     window.addEventListener("resize", checkOverflow);
@@ -86,9 +84,7 @@ function AboutSection({ information }: AboutSectionProps) {
           key={index}
           className="w-full grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] py-8 xl:py-14"
         >
-          {/* First Column - Title and Left Images */}
           <div className="col-span-1 flex flex-col">
-            {/* Title Section */}
             <div className="mb-10 xl:mb-[100px]">
               <div className="flex gap-3 items-center">
                 <span className="text-elements text-[1.125rem] xl:text-[1.25rem] font-medium font-Moneta">
@@ -110,12 +106,17 @@ function AboutSection({ information }: AboutSectionProps) {
                   />
                 </svg>
               </div>
-              <h2 className="text-textBase text-right pt-6 xl:pt-8 font-archivo text-2xl md:text-3xl xl:text-4xl font-medium leading-9">
+              <h2 className="text-textBase pt-6 xl:pt-8 font-archivo text-2xl md:text-3xl xl:text-4xl font-medium leading-9">
                 {item.title}
               </h2>
+              <div className="flex w-full justify-start mt-8">
+
+                <Link href="/gallery" className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white">
+                  Qalereyaya keçid et
+                </Link>
+              </div>
             </div>
 
-            {/* Left Images with equal spacing */}
             <div className="hidden xl:flex flex-col justify-between gap-10">
               <div className="flex justify-center xl:block">
                 <Image
@@ -138,9 +139,7 @@ function AboutSection({ information }: AboutSectionProps) {
             </div>
           </div>
 
-          {/* Second Column - Description and Right Image */}
           <div className="col-span-2 flex flex-col">
-            {/* Description */}
             <div className="w-full mt-1 mb-[100px]">
               <div className="hidden xl:flex items-center h-[23px]">
                 <svg
@@ -169,7 +168,6 @@ function AboutSection({ information }: AboutSectionProps) {
                     expandedItems[index] ? "" : "line-clamp-4"
                   }`}
                 />
-                {/* {item.description} */}
 
                 {hasOverflow[index] && (
                   <button
@@ -182,7 +180,6 @@ function AboutSection({ information }: AboutSectionProps) {
               </div>
             </div>
 
-            {/* Right Image with same height as left images container */}
             <div className="w-full flex items-center">
               <Image
                 width={800}

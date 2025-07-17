@@ -2,6 +2,7 @@ import React from "react";
 import { IntroServiceData } from "@/src/types";
 import { SocialMediaCard } from "../SocialmediaCard";
 import { GalleryCard } from "../GaleryCard";
+import Link from "next/link";
 
 const slugify = (text: string): string => {
   if (!text) return "";
@@ -26,8 +27,10 @@ export const GalleryCardList: React.FC<GalleryCardListProps> = ({ categories }) 
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
-      
-      <SocialMediaCard />
+        <Link href="/gallery/social-media">
+        <SocialMediaCard />
+      </Link>
+
 
       {categories.map((category) =>
         (category.information || []).map((item, index) => (
