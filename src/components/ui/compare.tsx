@@ -207,6 +207,7 @@ export const Compare = ({
             >
               <Image
                 alt="first image"
+                fill
                 src={firstImage}
                 className={cn(
                   "absolute inset-0  z-20  shrink-0 w-full h-full select-none",
