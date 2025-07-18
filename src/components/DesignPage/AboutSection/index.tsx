@@ -14,11 +14,12 @@ interface InformationItem {
   thumb_image_3: string;
 }
 
+
 interface AboutSectionProps {
   information: InformationItem[];
 }
 
-function AboutSection({ information }: AboutSectionProps) {
+function AboutSection({ information }: AboutSectionProps, ) {
   const [expandedItems, setExpandedItems] = useState<boolean[]>(
     new Array(information.length).fill(false)
   );
@@ -91,14 +92,17 @@ function AboutSection({ information }: AboutSectionProps) {
               <h2 className="text-textBase pt-6 xl:pt-8 font-archivo text-2xl md:text-3xl xl:text-4xl font-medium leading-9 text-end">
                 {item.title}
               </h2>
-              <div className="flex w-full justify-end mt-8">
-                <Link
-                  href="/gallery"
-                  className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white"
-                >
-                  Qalereyaya keçid et
-                </Link>
-              </div>
+
+              {item.title === 'Mətbəx mebeli' && (
+                <div className="flex w-full justify-end mt-8">
+                  <Link
+                    href="/gallery"
+                    className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white"
+                  >
+                    Qalereyaya keçid et
+                  </Link>
+                </div>
+              )}
             </div>
 
             <div className="col-span-2 flex flex-col mt-8 xl:mt-0">
@@ -145,7 +149,6 @@ function AboutSection({ information }: AboutSectionProps) {
           </div>
 
           <div className="w-full grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] mb-10 xl:mb-16 ">
-            {/* DƏYİŞİKLİK BURADADIR: Bu div kiçik ekranlarda gizlədilib */}
             <div className="hidden xl:flex col-span-1 flex-col gap-10">
               <div className="w-full">
                 <Image

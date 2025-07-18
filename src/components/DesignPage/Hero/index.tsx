@@ -7,7 +7,6 @@ interface HeroProps {
   title: string;
   image?: string;
   video?: string;
-  // Remove description from interface if not needed, or keep it if you plan to use it
 }
 
 function Hero({ title, image, video }: HeroProps) {
