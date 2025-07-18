@@ -27,40 +27,22 @@ function AboutSection({ information }: AboutSectionProps) {
   );
   const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const { t } = useTranslation();
+
   useEffect(() => {
     const checkOverflow = () => {
       const newHasOverflow = new Array(information.length).fill(false);
       textRefs.current.forEach((ref, index) => {
         if (ref) {
-          const tempElement = document.createElement("div");
-          tempElement.style.cssText = `
-            position: absolute;
-            visibility: hidden;
-            height: auto;
-            width: ${ref.offsetWidth}px;
-            font-family: ${window.getComputedStyle(ref).fontFamily};
-            font-size: ${window.getComputedStyle(ref).fontSize};
-            line-height: ${window.getComputedStyle(ref).lineHeight};
-            padding: ${window.getComputedStyle(ref).padding};
-            margin: ${window.getComputedStyle(ref).margin};
-          `;
-          tempElement.textContent = ref.textContent;
-          document.body.appendChild(tempElement);
-
-          const fullHeight = tempElement.offsetHeight;
-          document.body.removeChild(tempElement);
-
           const lineHeight = parseInt(window.getComputedStyle(ref).lineHeight);
+          // 4 sətirdən artıq olub-olmadığını yoxlayır
           const clampedHeight = lineHeight * 4;
-
-          newHasOverflow[index] = fullHeight > clampedHeight;
+          newHasOverflow[index] = ref.scrollHeight > clampedHeight;
         }
       });
       setHasOverflow(newHasOverflow);
     };
 
     const timer = setTimeout(checkOverflow, 100);
-
     window.addEventListener("resize", checkOverflow);
 
     return () => {
@@ -82,10 +64,10 @@ function AboutSection({ information }: AboutSectionProps) {
       {information.map((item, index) => (
         <div
           key={index}
-          className="w-full grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] py-8 xl:py-14"
+          className="w-full flex flex-col py-8 xl:py-14"
         >
-          <div className="col-span-1 flex flex-col">
-            <div className="mb-10 xl:mb-[100px]">
+          <div className="w-full h-auto grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] mb-10 xl:mb-16">
+            <div className="col-span-1 flex flex-col">
               <div className="flex gap-3 items-center">
                 <span className="text-elements text-[1.125rem] xl:text-[1.25rem] font-medium font-Moneta">
                   ({String(index + 1).padStart(2, "0")})
@@ -106,87 +88,92 @@ function AboutSection({ information }: AboutSectionProps) {
                   />
                 </svg>
               </div>
-              <h2 className="text-textBase pt-6 xl:pt-8 font-archivo text-2xl md:text-3xl xl:text-4xl font-medium leading-9">
+              <h2 className="text-textBase pt-6 xl:pt-8 font-archivo text-2xl md:text-3xl xl:text-4xl font-medium leading-9 text-end">
                 {item.title}
               </h2>
-              <div className="flex w-full justify-start mt-8">
-
-                <Link href="/gallery" className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white">
+              <div className="flex w-full justify-end mt-8">
+                <Link
+                  href="/gallery"
+                  className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white"
+                >
                   Qalereyaya keçid et
                 </Link>
               </div>
             </div>
 
-            <div className="hidden xl:flex flex-col justify-between gap-10">
-              <div className="flex justify-center xl:block">
-                <Image
-                  width={400}
-                  height={400}
-                  src={item.image_1}
-                  alt={`${item.title} - Image 1`}
-                  className="h-[200px] xl:h-[300px] w-[150px] xl:w-[450px] object-cover"
-                />
-              </div>
-              <div className="flex self-end xl:block">
-                <Image
-                  width={400}
-                  height={400}
-                  src={item.image_2}
-                  alt={`${item.title} - Image 2`}
-                  className="h-[200px] xl:h-[300px] w-[150px] xl:w-[450px] object-cover"
-                />
+            <div className="col-span-2 flex flex-col mt-8 xl:mt-0">
+              <div className="w-full">
+                <div className="hidden md:flex items-center h-[23px] mt-[3px]">
+                  <svg
+                    className="w-full h-[1px]"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 100 1"
+                  >
+                    <line
+                      x1="0"
+                      y1="0.5"
+                      x2="100"
+                      y2="0.5"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      className="text-elements"
+                    />
+                  </svg>
+                </div>
+                <div className="pt-6 xl:pt-8">
+                  <p
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                    ref={(el) => {
+                      textRefs.current[index] = el;
+                    }}
+                    className={`text-secondary text-left text-sm xl:text-base font-manrope max-w-full xl:max-w-[805px] transition-all duration-300 ${
+                      expandedItems[index] ? "" : "line-clamp-4"
+                    }`}
+                  />
+
+                  {hasOverflow[index] && (
+                    <button
+                      onClick={() => toggleExpanded(index)}
+                      className="text-elements hover:text-textBase transition-colors duration-200 text-sm xl:text-base font-medium mt-3 underline underline-offset-2"
+                    >
+                      {expandedItems[index] ? t("show_less") : t("show_more")}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="col-span-2 flex flex-col">
-            <div className="w-full mt-1 mb-[100px]">
-              <div className="hidden xl:flex items-center h-[23px]">
-                <svg
-                  className="w-full h-[1px]"
-                  preserveAspectRatio="none"
-                  viewBox="0 0 100 1"
-                >
-                  <line
-                    x1="0"
-                    y1="0.5"
-                    x2="100"
-                    y2="0.5"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    className="text-elements"
-                  />
-                </svg>
-              </div>
-              <div className="pt-6 xl:pt-8">
-                <p
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                  ref={(el) => {
-                    textRefs.current[index] = el;
-                  }}
-                  className={`text-secondary text-left text-sm xl:text-base font-manrope max-w-full xl:max-w-[805px] transition-all duration-300 ${
-                    expandedItems[index] ? "" : "line-clamp-4"
-                  }`}
+          <div className="w-full grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] mb-10 xl:mb-16 ">
+            {/* DƏYİŞİKLİK BURADADIR: Bu div kiçik ekranlarda gizlədilib */}
+            <div className="hidden xl:flex col-span-1 flex-col gap-10">
+              <div className="w-full">
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image_1}
+                  alt={`${item.title} - Image 1`}
+                  className="w-full h-[300px] object-cover"
                 />
-
-                {hasOverflow[index] && (
-                  <button
-                    onClick={() => toggleExpanded(index)}
-                    className="text-elements hover:text-textBase transition-colors duration-200 text-sm xl:text-base font-medium mt-3 underline underline-offset-2"
-                  >
-                    {expandedItems[index] ? t("show_less") : t("show_more")}
-                  </button>
-                )}
+              </div>
+              <div className="w-full">
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image_2}
+                  alt={`${item.title} - Image 2`}
+                  className="w-full h-[300px] object-cover"
+                />
               </div>
             </div>
 
-            <div className="w-full flex items-center">
+            <div className="w-full h-auto col-span-2 ">
               <Image
-                width={800}
+                width={500}
                 height={500}
                 src={item.image_3}
                 alt={`${item.title} - Main Image`}
-                className="object-cover w-full h-[300px] sm:h-[400px] md:h-[500px] xl:h-[628px]"
+                className="w-full h-[200px] md:h-[640px] object-cover"
               />
             </div>
           </div>
