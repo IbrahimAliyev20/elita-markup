@@ -1,6 +1,5 @@
 
 import React from "react";
-import Container from "../../layout/Container";
 import Image from "next/image";
 
 interface HeroProps {
