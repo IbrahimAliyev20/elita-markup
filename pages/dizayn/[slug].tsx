@@ -55,9 +55,7 @@ export default function ProjectDetailed({
       </Container>
 
       <ContactBanner contactData={contactData} />
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 }

@@ -47,8 +47,8 @@ function Construction({ bannerData }: ConstructionProps) {
 
       <Container>
         <AboutSection information={bannerData.information} />
-        <Footer />
       </Container>
+      <Footer />
     </>
   );
 }

@@ -35,9 +35,7 @@ export default function About({ contactData, metaData }: AboutPageProps) {
         <Breadcrumb />
       </Container>
       <ContactBanner contactData={contactData} />
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 }

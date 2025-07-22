@@ -44,9 +44,7 @@ const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
           <GalleryCardList categories={categories} />
         </div>
       </Container>
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 };

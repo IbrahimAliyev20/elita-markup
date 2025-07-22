@@ -60,8 +60,8 @@ function Design({ services, bannerData, categories }: DesignPageProps) {
           description={categories[0]?.service_description || ""}
         />
         <ServicesSlider services={services} />
-        <Footer />
       </Container>
+        <Footer />
     </>
   );
 }

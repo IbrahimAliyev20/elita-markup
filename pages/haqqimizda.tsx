@@ -78,9 +78,7 @@ export default function About({
 
       <ContactBanner contactData={contactData} />
 
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 }

@@ -46,9 +46,7 @@ export default function Blog({ blogsData, metaData, breadcrumbs }: BlogPageProps
         <BlogGrid blogsData={blogsData} />
       </Container>
 
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 }

@@ -1,201 +1,202 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useTranslation, Trans } from "react-i18next";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Container from "../Container";
+
+// Qeyd: react-i18next və react-icons importları istifadə edilmədiyi üçün silindi.
+// Lazım gələrsə, yenidən əlavə edə bilərsiniz.
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
   return (
-    <footer className=" px-4 py-8 mt-14 border-t border-elements font-archivo w-full">
-      <div className="flex flex-col md:flex-row justify-between">
-        <div className="flex flex-col pb-5">
-          <div className="w-full mb-4">
+    <footer className="bg-[#545C56] text-white pt-12 pb-8">
+      <Container>
+        {/* Yuxarıdakı ayırıcı xətt */}
+        <div className="border-t border-white/20"></div>
+
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 py-12">
+          {/* Logo Column */}
+          <div className="md:col-span-1">
             <Image
-              src="/images/logo/logo-elita2.png"
-              alt="Elita Logo"
-              width={128}
-              height={32}
-              className="w-[140px] h-auto"
+              src="/images/logo/logo-elita2.png" 
+              alt="Elita Group Logo"
+              width={120}
+              height={40}
+              className="w-[120px] h-auto brightness-0 invert"
             />
           </div>
-          <div className="flex items-center gap-3 mt-4">
-            <a
-              href="https://instagram.com/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#E1306C]"
-            >
-              <FaInstagram />
-            </a>
-
-            <a
-              href="https://facebook.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1877F2]"
-            >
-              <FaFacebook />
-            </a>
-
-            <a
-              href="https://twitter.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1DA1F2]"
-            >
-              <FaTwitter />
-            </a>
-
-            <a
-              href="https://linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#0077B5]"
-            >
-              <FaLinkedin />
-            </a>
-          </div>
-        </div>
-
-        {/* Fixed grid with equal column widths */}
-        <div className="grid grid-cols-1 md:grid-cols-3  gap-6 flex-1 max-w-4xl">
-          {/* Dizayn Column */}
-          <div className="flex flex-col space-y-2 min-w-0">
-            <h3 className="font-normal text-textBase text-base">
-              {t("contactDetails.site_map")}
-            </h3>
-            <ul className="flex flex-col space-y-3">
+          <div>
+            <h3 className="text-white font-semibold text-base mb-6">Dizayn</h3>
+            <ul className="space-y-3">
               <li>
                 <Link
-                  href="/"
-                  className="text-elementSecondary  hover:text-secondary text-sm transition-colors"
+                  href="/dizayn"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.home")}
+                  Layihələr
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/haqqimizda"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/dizayn"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.about")}
+                  Xidmətlər
                 </Link>
               </li>
               <li>
                 <Link
                   href="/blog"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.blog")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/elaqe"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
-                >
-                  {t("contactDetails.contact")}
+                  Blog
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Temir ve tikinti Column */}
-          <div className="flex flex-col space-y-2 min-w-0">
-            <h3 className="font-normal text-textBase text-base">
-              {t("contactDetails.services")}
+          <div>
+            <h3 className="text-white font-semibold text-base mb-6">
+              Təmir və tikinti
             </h3>
-            <ul className="flex flex-col space-y-3">
+            <ul className="space-y-3">
               <li>
                 <Link
-                  href="/dizayn"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/temir"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.design")}
+                  Layihələr
                 </Link>
               </li>
               <li>
                 <Link
                   href="/temir"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.repair_construction")}
+                  Xidmətlər
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/mebel"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/blog"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.furniture")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/hamam"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
-                >
-                  {t("contactDetails.bath_accessories")}
+                  Blog
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Mebel Column */}
-          <div className="flex flex-col space-y-2 min-w-0">
-            <h3 className="font-normal text-textBase text-base">
-              {" "}
-              {t("contactDetails.elita_group")}
+          <div>
+            <h3 className="text-white font-semibold text-base mb-6">Mebel</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/mebel"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Layihələr
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/mebel"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Xidmətlər
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold text-base mb-6">
+              Hamam aksesuarları
             </h3>
-            <ul className="flex flex-col space-y-3">
+            <ul className="space-y-3">
               <li>
                 <Link
-                  href="/"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/hamam"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.address")}
+                  Layihələr
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/hamam"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.phone")}
+                  Xidmətlər
+                </Link>
+              </li>
+               <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold text-base mb-6">Elita</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/haqqimizda"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Haqqımızda
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/"
-                  className="text-elementSecondary hover:text-secondary text-sm transition-colors"
+                  href="/elaqe"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  {t("contactDetails.mail")}
+                  Əlaqə
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                >
+                  Blog
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-      </div>
-      <div className="border-t border-border pt-8 mt-4">
-        <div className="px-4 flex flex-col items-center justify-center gap-2">
-          <div className="text-textBase text-[10px] uppercase tracking-widest text-center">
-            <Trans
-              i18nKey="madeBy"
-              components={{
-                markupLink: (
-                  <Link
-                    href="https://markup.az/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="pb-1 font-semibold bg-gradient-to-r from-orange-500 via-red-500 to-purple-600 bg-no-repeat [background-size:100%_2px] bg-bottom hover:text-gray-300 transition-colors"
-                  />
-                ),
-              }}
-            />
+
+        <div className="border-t border-white/20 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
+              © Copyright 2025 | Bütün hüquqlar qorunur.
+            </div>
+            <div className="text-center md:text-right">
+              <Link
+                href="https://markup.az/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Markup tərəfindən hazırlanıb.
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

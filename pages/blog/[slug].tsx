@@ -26,8 +26,8 @@ function BlogDetailed({ blog }: BlogDetailedProps) {
         <Header />
         <Breadcrumb />
         <BlogDetails blog={blog} />
-        <Footer />
       </Container>
+        <Footer />
     </>
   );
 }

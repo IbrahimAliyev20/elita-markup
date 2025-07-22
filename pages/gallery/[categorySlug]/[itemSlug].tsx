@@ -75,9 +75,7 @@ const GalleryItemPage: NextPage<GalleryItemPageProps> = ({ item }) => {
         </div>
       </Container>
 
-      <Container>
         <Footer />
-      </Container>
 
       <ImageModal 
         isOpen={isModalOpen} 

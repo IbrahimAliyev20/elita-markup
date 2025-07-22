@@ -39,9 +39,7 @@ const SocialMediaPage = () => {
         </div>
       </Container>
 
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 };

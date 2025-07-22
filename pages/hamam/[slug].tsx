@@ -35,9 +35,7 @@ const BathroomDetailed = ({ product  ,phone}: BathroomDetailedProps) => {
         <ProductSingle product={product} phone={phone} />
       </Container>
 
-      <Container>
         <Footer />
-      </Container>
     </>
   );
 };

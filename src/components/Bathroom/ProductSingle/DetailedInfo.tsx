@@ -30,6 +30,16 @@ function DetailedInfo({
     ).values(),
   ];
 
+  const buttonClassName = `
+    bg-transparent  text-[#373737] 
+    font-medium py-3 px-4 font-archivo text-base 
+    flex-1 flex items-center justify-center gap-3 
+    transition-all duration-300 ease-in-out 
+    hover:bg-[#373737] hover:text-white 
+    focus:outline-none focus:ring-2 focus:ring-[#373737] focus:ring-opacity-50 
+    active:scale-95
+  `;
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex-grow">
@@ -47,7 +57,8 @@ function DetailedInfo({
           />
         </div>
 
-        <div className="flex flex-col gap-4">
+        {/* This div was duplicated in your original code, I've kept one */}
+        <div className="flex flex-col gap-4 mt-8"> {/* Added margin-top for spacing */}
           <p
             className="text-textBase font-archivo text-xl leading-5 font-medium"
             dangerouslySetInnerHTML={{ __html: t("contactDetails.details") }}
@@ -160,35 +171,23 @@ function DetailedInfo({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 pt-10">
-        <div>
-          <Link
-            href={`https://wa.me/${sanitizedPhone}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-textBase font-medium bg-[#E9EDEA] py-3 font-archivo text-base w-full flex items-center gap-3 justify-center rounded-lg
-                       transition-all duration-300 ease-in-out
-                       hover:bg-emerald-50 hover:border-emerald-800
-                       focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50
-                       active:bg-emerald-100 active:scale-95"
-          >
-            <SiWhatsapp className="text-black text-base" />
-            {t("contactDetails.whatsapp")}
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="/elaqe"
-            className="text-textBase font-medium bg-[#E9EDEA] py-3 font-archivo text-base w-full flex items-center justify-center gap-3 rounded-lg
-                       transition-all duration-300 ease-in-out
-                       hover:bg-textBase hover:text-white
-                       focus:outline-none focus:ring-2 focus:ring-textBase focus:ring-opacity-50
-                       active:bg-textBase/90 active:scale-95 group"
-          >
-            <FiPhone className="text-black text-base group-hover:text-emerald-500" />
-            {t("contactDetails.contact_us")}
-          </Link>
-        </div>
+      <div className="flex gap-3 pt-10">
+        <Link
+          href={`https://wa.me/${sanitizedPhone}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClassName}
+        >
+          <SiWhatsapp className="text-lg" />
+          {t("contactDetails.whatsapp")}
+        </Link>
+        <Link
+          href="/elaqe"
+          className={buttonClassName}
+        >
+          <FiPhone className="text-lg" />
+          {t("contactDetails.contact_us")}
+        </Link>
       </div>
     </div>
   );
