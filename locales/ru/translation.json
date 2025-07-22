@@ -1,6 +1,6 @@
 {
   "nav": {
-      "services": "Наши услуги",
+    "services": "Наши услуги",
     "projects": "Проекты",
     "search": "Поиск",
     "contact": "Связаться с нами",
@@ -76,6 +76,8 @@
   "faq": {
     "title": "Часто задаваемые вопросы"
   },
-      "menu": "Меню",
-      "share": "Поделиться"
+  "menu": "Меню",
+  "share": "Поделиться",
+  "all": "Все",
+  "madeBy": "Веб-сайт сделан <markupLink>Markup Agency</markupLink>"
 }

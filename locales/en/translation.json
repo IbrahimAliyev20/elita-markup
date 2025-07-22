@@ -6,14 +6,14 @@
     "contact": "Contact us",
     "featured": "Featured",
     "new": "New",
-    "special_prices": "Special Prices",
+    "special_prices": "Speci  al Prices",
     "view_all": "View All"
   },
   "about": "About Us",
   "contact": "Contact",
+  "design": "Design",
   "faq": "FAQ",
-    "design": "Design",
-    "repair_construction": "Construction",
+  "repair_construction": "Construction",
   "furniture": "Furniture",
   "bath_accessories": "Bath Accessories",
   "no_results_for": "No results found for",
@@ -75,6 +75,8 @@
   "faq": {
     "title": "Frequently Asked Questions"
   },
-    "menu": "Menu",
-    "share": "Share"
+  "menu": "Menu",
+  "share": "Share",
+  "all": "All",
+  "madeBy": "Website made by <markupLink>Markup Agency</markupLink>"
 }

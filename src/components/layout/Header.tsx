@@ -57,7 +57,7 @@ function Header({ activeItem = "" }) {
     setIsSidebarVisible(false);
     setTimeout(() => {
       setIsMenuOpen(false);
-    }, 400); 
+    }, 400);
   };
 
   return (
@@ -68,7 +68,7 @@ function Header({ activeItem = "" }) {
             <div>
               <Link href="/">
                 <Image
-                className="w-[110px]"
+                  className="w-[200px]"
                   src="/images/logo/logo-elita2.png"
                   width={90}
                   height={20}
@@ -85,7 +85,9 @@ function Header({ activeItem = "" }) {
                     {activeItem === item.id ? (
                       <div className="flex items-center gap-1 underline decoration-[1px] underline-offset-8 decoration-amber-700 cursor-pointer">
                         <RxDotFilled className="text-amber-700 text-2xl" />
-                        <span className="text-textBase text-lg">{item.label}</span>
+                        <span className="text-textBase text-lg">
+                          {item.label}
+                        </span>
                       </div>
                     ) : (
                       <span className="text-textBase text-lg transition-colors duration-300 cursor-pointer hover:text-amber-700">
@@ -175,7 +177,9 @@ function Header({ activeItem = "" }) {
                     {activeItem === item.id ? (
                       <div className="flex items-center gap-1 underline decoration-[1px] underline-offset-8 decoration-amber-700 cursor-pointer">
                         <RxDotFilled className="text-amber-700 text-2xl" />
-                        <span className="text-textBase text-xl">{item.label}</span>
+                        <span className="text-textBase text-xl">
+                          {item.label}
+                        </span>
                       </div>
                     ) : (
                       <span className="text-textBase text-xl transition-colors duration-300 cursor-pointer hover:text-amber-700">
@@ -220,14 +224,14 @@ function Header({ activeItem = "" }) {
                 isSidebarVisible ? "translate-x-0" : "translate-x-full"
               }`}
               style={{
-                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               <div className="flex h-full flex-col bg-white shadow-2xl">
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 py-5 border-b border-neutral-200">
                   <h2 className="text-lg text-neutral-800">{t("menu")}</h2>
-                  <button 
+                  <button
                     onClick={handleSidebarClose}
                     className="p-1 hover:bg-neutral-100 rounded-full transition-colors duration-200"
                   >

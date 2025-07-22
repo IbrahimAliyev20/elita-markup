@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
   return (
     <footer className=" px-4 py-8 mt-14 border-t border-elements font-archivo w-full">
-      <div className="flex  flex-col md:flex-row justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col pb-5">
           <div className="w-full mb-4">
             <Image
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               href="https://instagram.com/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#E1306C]"
+              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#E1306C]"
             >
               <FaInstagram />
             </a>
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               href="https://facebook.com/yourpage"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1877F2]"
+              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1877F2]"
             >
               <FaFacebook />
             </a>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
               href="https://twitter.com/yourhandle"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1DA1F2]"
+              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#1DA1F2]"
             >
               <FaTwitter />
             </a>
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
               href="https://linkedin.com/in/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-elements text-2xl transform transition-transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#0077B5]"
+              className="text-elements text-2xl transform transition-colors duration-300 ease-in-out hover:scale-110 hover:text-[#0077B5]"
             >
               <FaLinkedin />
             </a>
@@ -63,12 +63,12 @@ const Footer: React.FC = () => {
           {/* Dizayn Column */}
           <div className="flex flex-col space-y-2 min-w-0">
             <h3 className="font-normal text-textBase text-base">
-              {t("contactDetails.site_map")}  
+              {t("contactDetails.site_map")}
             </h3>
             <ul className="flex flex-col space-y-3">
               <li>
-              <Link href="/"
-                 
+                <Link
+                  href="/"
                   className="text-elementSecondary  hover:text-secondary text-sm transition-colors"
                 >
                   {t("contactDetails.home")}
@@ -154,7 +154,7 @@ const Footer: React.FC = () => {
                   href="/"
                   className="text-elementSecondary hover:text-secondary text-sm transition-colors"
                 >
-                    {t("contactDetails.address")}
+                  {t("contactDetails.address")}
                 </Link>
               </li>
               <li>
@@ -174,6 +174,25 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-border pt-8 mt-4">
+        <div className="px-4 flex flex-col items-center justify-center gap-2">
+          <div className="text-textBase text-[10px] uppercase tracking-widest text-center">
+            <Trans
+              i18nKey="madeBy"
+              components={{
+                markupLink: (
+                  <Link
+                    href="https://markup.az/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pb-1 font-semibold bg-gradient-to-r from-orange-500 via-red-500 to-purple-600 bg-no-repeat [background-size:100%_2px] bg-bottom hover:text-gray-300 transition-colors"
+                  />
+                ),
+              }}
+            />
           </div>
         </div>
       </div>

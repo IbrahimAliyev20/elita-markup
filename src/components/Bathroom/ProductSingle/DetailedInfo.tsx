@@ -3,6 +3,7 @@ import { Product, ImageVariant, Attribute } from "@/src/types";
 import Link from "next/link";
 import { SiWhatsapp } from "react-icons/si";
 import { useTranslation } from "react-i18next";
+import { FiPhone } from "react-icons/fi";
 
 interface DetailedInfoProps {
   product: Product;
@@ -11,7 +12,12 @@ interface DetailedInfoProps {
   onColorSelect?: (colorName: string, hex: string) => void;
 }
 
-function DetailedInfo({ product, phone, selectedColor, onColorSelect }: DetailedInfoProps) {
+function DetailedInfo({
+  product,
+  phone,
+  selectedColor,
+  onColorSelect,
+}: DetailedInfoProps) {
   const { t } = useTranslation();
   const sanitizedPhone = phone.replace(/\D/g, "");
 
@@ -20,7 +26,7 @@ function DetailedInfo({ product, phone, selectedColor, onColorSelect }: Detailed
     ...new Map(
       product.images.map((img: ImageVariant) => [
         `${img.color_name}-${img.hex}`,
-        { color_name: img.color_name, hex: img.hex }
+        { color_name: img.color_name, hex: img.hex },
       ])
     ).values(),
   ];
@@ -104,7 +110,8 @@ function DetailedInfo({ product, phone, selectedColor, onColorSelect }: Detailed
                 <p
                   className="text-elementSecondary text-base font-medium font-manrope leading-6"
                   dangerouslySetInnerHTML={{
-                    __html: t("contactDetails.selected_color") || "Selected Color",
+                    __html:
+                      t("contactDetails.selected_color") || "Selected Color",
                   }}
                 />
                 <div className="flex items-center gap-2">
@@ -133,8 +140,8 @@ function DetailedInfo({ product, phone, selectedColor, onColorSelect }: Detailed
                     key={`${color.color_name}-${color.hex}`}
                     onClick={() => onColorSelect?.(color.color_name, color.hex)}
                     className={`flex items-center text-neutral-700 gap-1 px-2 py-1 rounded border transition-all hover:bg-gray-50 ${
-                      selectedColor && 
-                      selectedColor.color_name === color.color_name && 
+                      selectedColor &&
+                      selectedColor.color_name === color.color_name &&
                       selectedColor.hex === color.hex
                         ? "border-gray-800 bg-gray-100"
                         : "border-gray-300"
@@ -145,7 +152,9 @@ function DetailedInfo({ product, phone, selectedColor, onColorSelect }: Detailed
                       className="w-4 h-4 rounded-full border border-gray-300"
                       style={{ backgroundColor: color.hex }}
                     />
-                    <span className="text-xs font-medium">{color.color_name}</span>
+                    <span className="text-xs font-medium">
+                      {color.color_name}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -157,31 +166,31 @@ function DetailedInfo({ product, phone, selectedColor, onColorSelect }: Detailed
       <div className="flex flex-col gap-4 pt-10">
         <div>
           <Link
-            href="/elaqe"
-            className="text-textBase border border-textBase py-2 font-archivo font-base w-full flex items-center justify-center leading-5
-                      transition-all duration-300 ease-in-out
-                      hover:bg-textBase hover:text-white
-                      focus:outline-none focus:ring-2 focus:ring-textBase focus:ring-opacity-50
-                      active:bg-textBase/90 active:scale-95"
-          >
-            {t("contactDetails.contact_us")}
-          </Link>
-        </div>
-
-        <div>
-          <a
             href={`https://wa.me/${sanitizedPhone}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-textBase border border-textBase py-2 font-archivo font-base w-full flex items-center gap-5 justify-center leading-5
+            className="text-textBase font-medium bg-[#E9EDEA] py-2 font-archivo font-base w-full flex items-center gap-3 justify-center leading-5
                       transition-all duration-300 ease-in-out
                       hover:bg-emerald-50 hover:border-emerald-800
                       focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50
                       active:bg-emerald-100 active:scale-95"
           >
-            <SiWhatsapp className="text-emerald-400 text-base" />
+            <SiWhatsapp className="text-black text-base" />
             {t("contactDetails.whatsapp")}
-          </a>
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/elaqe"
+            className="text-textBase font-medium bg-[#E9EDEA] py-2 font-archivo font-base w-full flex items-center justify-center leading-5
+                      transition-all duration-300 ease-in-out
+                      hover:bg-textBase hover:text-white
+                      focus:outline-none focus:ring-2 focus:ring-textBase focus:ring-opacity-50
+                      active:bg-textBase/90 active:scale-95 group"
+          >
+            <FiPhone className="text-black text-base mr-6 group-hover:text-emerald-500" />
+            {t("contactDetails.contact_us")}
+          </Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -14,12 +15,13 @@ interface InformationItem {
   thumb_image_3: string;
 }
 
-
 interface AboutSectionProps {
   information: InformationItem[];
 }
 
-function AboutSection({ information }: AboutSectionProps, ) {
+function AboutSection({ information }: AboutSectionProps) {
+  const pathname = usePathname();
+
   const [expandedItems, setExpandedItems] = useState<boolean[]>(
     new Array(information.length).fill(false)
   );
@@ -27,7 +29,13 @@ function AboutSection({ information }: AboutSectionProps, ) {
     new Array(information.length).fill(false)
   );
   const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { t } = useTranslation();
+
+  // Get unique titles for filter buttons
+  const uniqueTitles = Array.from(
+    new Set(information.map((item) => item.title))
+  );
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -60,11 +68,36 @@ function AboutSection({ information }: AboutSectionProps, ) {
     });
   };
 
+  const handleScrollToSection = (title: string) => {
+    const index = information.findIndex((item) => item.title === title);
+    if (index !== -1 && sectionRefs.current[index]) {
+      sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div>
+      {/* Filter Buttons (now scroll to section) */}
+      <div className="flex gap-2 my-8 overflow-x-auto whitespace-nowrap scrollbar-hide md:flex-wrap md:overflow-visible md:whitespace-normal">
+        {uniqueTitles.map((title) => (
+          <button
+            key={title}
+            type="button"
+            onClick={() => handleScrollToSection(title)}
+            className={
+              "px-4 py-2 rounded-md border font-medium transition-colors duration-200 bg-white text-[#5A635C] border-[#5A635C] hover:bg-[#5A635C] hover:text-white"
+            }
+          >
+            {title}
+          </button>
+        ))}
+      </div>
       {information.map((item, index) => (
         <div
           key={index}
+          ref={el => {
+            sectionRefs.current[index] = el;
+          }}
           className="w-full flex flex-col py-8 xl:py-14"
         >
           <div className="w-full h-auto grid grid-cols-1 xl:grid-cols-3 md:gap-[100px] mb-10 xl:mb-16">
@@ -93,7 +126,7 @@ function AboutSection({ information }: AboutSectionProps, ) {
                 {item.title}
               </h2>
 
-              {item.title === 'Mətbəx mebeli' && (
+              {pathname === "/mebel" && (
                 <div className="flex w-full justify-end mt-8">
                   <Link
                     href="/gallery"
