@@ -32,7 +32,6 @@ function AboutSection({ information }: AboutSectionProps) {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { t } = useTranslation();
 
-  // Get unique titles for filter buttons
   const uniqueTitles = Array.from(
     new Set(information.map((item) => item.title))
   );
@@ -43,7 +42,6 @@ function AboutSection({ information }: AboutSectionProps) {
       textRefs.current.forEach((ref, index) => {
         if (ref) {
           const lineHeight = parseInt(window.getComputedStyle(ref).lineHeight);
-          // 4 sətirdən artıq olub-olmadığını yoxlayır
           const clampedHeight = lineHeight * 4;
           newHasOverflow[index] = ref.scrollHeight > clampedHeight;
         }
@@ -71,26 +69,36 @@ function AboutSection({ information }: AboutSectionProps) {
   const handleScrollToSection = (title: string) => {
     const index = information.findIndex((item) => item.title === title);
     if (index !== -1 && sectionRefs.current[index]) {
-      sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const navbarHeight = 64; // Typical navbar height (adjust if needed)
+      const stickyHeaderHeight = 100; // Height of sticky buttons container
+      const totalOffset = navbarHeight + stickyHeaderHeight;
+      const elementPosition = sectionRefs.current[index]?.offsetTop || 0;
+      const offsetPosition = elementPosition - totalOffset;
+      
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth"
+      });
     }
   };
 
   return (
     <div>
-      {/* Filter Buttons (now scroll to section) */}
-      <div className="flex gap-2 my-8 overflow-x-auto whitespace-nowrap scrollbar-hide md:flex-wrap md:overflow-visible md:whitespace-normal">
-        {uniqueTitles.map((title) => (
-          <button
-            key={title}
-            type="button"
-            onClick={() => handleScrollToSection(title)}
-            className={
-              "px-4 py-2 rounded-md border font-medium transition-colors duration-200 bg-white text-[#5A635C] border-[#5A635C] hover:bg-[#5A635C] hover:text-white"
-            }
-          >
-            {title}
-          </button>
-        ))}
+      <div className="sticky top-20 z-40 bg-white shadow-sm border-b border-gray-100 py-4 mb-8">
+        <div className="flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide md:flex-wrap md:overflow-visible md:whitespace-normal">
+          {uniqueTitles.map((title) => (
+            <button
+              key={title}
+              type="button"
+              onClick={() => handleScrollToSection(title)}
+              className={
+                "px-4 py-2 rounded-md border font-medium transition-colors duration-200 bg-white text-[#5A635C] border-[#5A635C] hover:bg-[#5A635C] hover:text-white flex-shrink-0"
+              }
+            >
+              {title}
+            </button>
+          ))}
+        </div>
       </div>
       {information.map((item, index) => (
         <div
