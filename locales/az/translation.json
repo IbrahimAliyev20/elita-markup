@@ -11,7 +11,9 @@
   },
   "about": "Haqqımızda",
   "contact": "Əlaqə",
-  "faq": "Tez-tez verilən suallar",
+  "faq": {
+    "title": "Tez-tez soruşulan suallar"
+  },
   "design": "Dizayn",
   "repair_construction": "Təmir və Tikinti",
   "furniture": "Mebel",
@@ -35,11 +37,13 @@
   "contact_error_send": "Göndərilmə zamanı xəta baş verdi",
   "error_try_again": "Xəta baş verdi, zəhmət olmasa yenidən cəhd edin",
   "no_contact_info": "Əlaqə məlumatı mövcud deyil.",
+  "how_can_we_help": "Size necə kömək edə bilərik?",
   "first_name": "Adınız",
   "last_name": "Soyadınız",
   "enter_first_name": "Adınızı daxil edin",
   "enter_last_name": "Soyadınızı daxil edin",
   "phone_number": "Telefon nömrəniz",
+  "enter_phone_number": "Telefon nömrənizi daxil edin",
   "sending": "Göndərilir...",
   "send": "Göndər",
   "services": "Xidmətlər",
@@ -72,9 +76,6 @@
   "show_less": "Daha az göstər",
   "show_more": "Daha çox göstər",
   "brands": "Brendlər",
-  "faq": {
-    "title": "Tez-tez soruşulan suallar"
-  },
   "menu": "Menu",
   "share": "Paylaş",
   "all": "Hamısı",

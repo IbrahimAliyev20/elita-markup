@@ -168,7 +168,6 @@ function ProductSlider({ images, selectedColor }: ProductSliderProps) {
         )}
       </div>
 
-      {/* Thumbnail strip - only show if more than 1 image for current color */}
       <div
         ref={thumbnailsRef}
         className="w-full h-32 flex gap-2 overflow-x-auto scrollbar-hide cursor-grab select-none snap-x snap-mandatory"
@@ -194,7 +193,7 @@ function ProductSlider({ images, selectedColor }: ProductSliderProps) {
               }`}
               width={100}
               height={100}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain "
             />
           </div>
         ))}

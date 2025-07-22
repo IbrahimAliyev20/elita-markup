@@ -35,17 +35,6 @@ export default function About({ contactData, metaData }: AboutPageProps) {
         <Breadcrumb />
       </Container>
       <ContactBanner contactData={contactData} />
-      <iframe
-  src={contactData?.map || ""}
-        width="100%"
-        height="100%"
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="w-full h-[250px] md:h-[400px] mt-4"
-      >
-      </iframe>
-
       <Container>
         <Footer />
       </Container>

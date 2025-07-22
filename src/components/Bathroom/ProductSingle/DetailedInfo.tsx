@@ -21,7 +21,6 @@ function DetailedInfo({
   const { t } = useTranslation();
   const sanitizedPhone = phone.replace(/\D/g, "");
 
-  // Group unique colors
   const uniqueColors = [
     ...new Map(
       product.images.map((img: ImageVariant) => [
@@ -104,7 +103,6 @@ function DetailedInfo({
               </div>
             )}
 
-            {/* Selected Color */}
             {selectedColor && (
               <div className="flex justify-between items-center">
                 <p
@@ -126,7 +124,6 @@ function DetailedInfo({
               </div>
             )}
 
-            {/* Color Availability */}
             <div className="flex justify-between items-start">
               <p
                 className="text-elementSecondary text-base font-medium font-manrope leading-6"
@@ -169,11 +166,11 @@ function DetailedInfo({
             href={`https://wa.me/${sanitizedPhone}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-textBase font-medium bg-[#E9EDEA] py-2 font-archivo font-base w-full flex items-center gap-3 justify-center leading-5
-                      transition-all duration-300 ease-in-out
-                      hover:bg-emerald-50 hover:border-emerald-800
-                      focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50
-                      active:bg-emerald-100 active:scale-95"
+            className="text-textBase font-medium bg-[#E9EDEA] py-3 font-archivo text-base w-full flex items-center gap-3 justify-center rounded-lg
+                       transition-all duration-300 ease-in-out
+                       hover:bg-emerald-50 hover:border-emerald-800
+                       focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50
+                       active:bg-emerald-100 active:scale-95"
           >
             <SiWhatsapp className="text-black text-base" />
             {t("contactDetails.whatsapp")}
@@ -182,13 +179,13 @@ function DetailedInfo({
         <div>
           <Link
             href="/elaqe"
-            className="text-textBase font-medium bg-[#E9EDEA] py-2 font-archivo font-base w-full flex items-center justify-center leading-5
-                      transition-all duration-300 ease-in-out
-                      hover:bg-textBase hover:text-white
-                      focus:outline-none focus:ring-2 focus:ring-textBase focus:ring-opacity-50
-                      active:bg-textBase/90 active:scale-95 group"
+            className="text-textBase font-medium bg-[#E9EDEA] py-3 font-archivo text-base w-full flex items-center justify-center gap-3 rounded-lg
+                       transition-all duration-300 ease-in-out
+                       hover:bg-textBase hover:text-white
+                       focus:outline-none focus:ring-2 focus:ring-textBase focus:ring-opacity-50
+                       active:bg-textBase/90 active:scale-95 group"
           >
-            <FiPhone className="text-black text-base mr-6 group-hover:text-emerald-500" />
+            <FiPhone className="text-black text-base group-hover:text-emerald-500" />
             {t("contactDetails.contact_us")}
           </Link>
         </div>
