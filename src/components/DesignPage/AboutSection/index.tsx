@@ -135,13 +135,13 @@ function AboutSection({ information }: AboutSectionProps) {
               </h2>
 
               {pathname === "/mebel" && (
-                <div className="flex w-full justify-end mt-8">
-                  <Link
+                <div className="flex w-full justify-end mt-8 ">
+                  {/* <Link
                     href="/gallery"
                     className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white"
                   >
                     Qalereyaya keçid et
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
