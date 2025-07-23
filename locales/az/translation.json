@@ -11,6 +11,7 @@
   },
   "about": "Haqqımızda",
   "contact": "Əlaqə",
+  "blog": "Blog",
   "faq": {
     "title": "Tez-tez soruşulan suallar"
   },
@@ -18,6 +19,12 @@
   "repair_construction": "Təmir və Tikinti",
   "furniture": "Mebel",
   "bath_accessories": "Hamam Aksesuarları",
+  "services": "Xidmətlər",
+  "footer": {
+    "elita": "Elita",
+    "copyright": "© Copyright 2025 | Bütün hüquqlar qorunur.",
+    "made_by": "Markup tərəfindən hazırlanıb."
+  },
   "no_results_for": "üçün nəticə tapılmadı",
   "no_products_found": "Heç bir məhsul tapılmadı",
   "try_another_search_term_or_change_filters": "Başqa axtarış sözü cəhd edin və ya filtrləri dəyişin.",
@@ -46,7 +53,6 @@
   "enter_phone_number": "Telefon nömrənizi daxil edin",
   "sending": "Göndərilir...",
   "send": "Göndər",
-  "services": "Xidmətlər",
   "contactDetails": {
     "whatsapp": "WhatsApp-la əlaqə",
     "contact_us": "Bizimlə əlaqə",

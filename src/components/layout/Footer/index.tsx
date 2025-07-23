@@ -1,23 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Container from "../Container";
 
-// Qeyd: react-i18next və react-icons importları istifadə edilmədiyi üçün silindi.
-// Lazım gələrsə, yenidən əlavə edə bilərsiniz.
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-[#545C56] text-white pt-12 pb-8">
       <Container>
-        {/* Yuxarıdakı ayırıcı xətt */}
         <div className="border-t border-white/20"></div>
 
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8 py-12">
-          {/* Logo Column */}
           <div className="md:col-span-1">
             <Image
-              src="/images/logo/logo-elita2.png" 
+              src="/images/logo/logo-elita2.png"
               alt="Elita Group Logo"
               width={120}
               height={40}
@@ -25,14 +24,14 @@ const Footer: React.FC = () => {
             />
           </div>
           <div>
-            <h3 className="text-white font-semibold text-base mb-6">Dizayn</h3>
+            <h3 className="text-white font-semibold text-base mb-6">{t('design')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/dizayn"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Layihələr
+                  {t('nav.projects')}
                 </Link>
               </li>
               <li>
@@ -40,7 +39,7 @@ const Footer: React.FC = () => {
                   href="/dizayn"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Xidmətlər
+                  {t('services')}
                 </Link>
               </li>
               <li>
@@ -48,7 +47,7 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
               </li>
             </ul>
@@ -56,7 +55,7 @@ const Footer: React.FC = () => {
 
           <div>
             <h3 className="text-white font-semibold text-base mb-6">
-              Təmir və tikinti
+              {t('repair_construction')}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -64,7 +63,7 @@ const Footer: React.FC = () => {
                   href="/temir"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Layihələr
+                  {t('nav.projects')}
                 </Link>
               </li>
               <li>
@@ -72,7 +71,7 @@ const Footer: React.FC = () => {
                   href="/temir"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Xidmətlər
+                  {t('services')}
                 </Link>
               </li>
               <li>
@@ -80,21 +79,21 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-white font-semibold text-base mb-6">Mebel</h3>
+            <h3 className="text-white font-semibold text-base mb-6">{t('furniture')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/mebel"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Layihələr
+                  {t('nav.projects')}
                 </Link>
               </li>
               <li>
@@ -102,7 +101,7 @@ const Footer: React.FC = () => {
                   href="/mebel"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Xidmətlər
+                  {t('services')}
                 </Link>
               </li>
               <li>
@@ -110,7 +109,7 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
               </li>
             </ul>
@@ -118,7 +117,7 @@ const Footer: React.FC = () => {
 
           <div>
             <h3 className="text-white font-semibold text-base mb-6">
-              Hamam aksesuarları
+              {t('bath_accessories')}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -126,7 +125,7 @@ const Footer: React.FC = () => {
                   href="/hamam"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Layihələr
+                  {t('nav.projects')}
                 </Link>
               </li>
               <li>
@@ -134,29 +133,29 @@ const Footer: React.FC = () => {
                   href="/hamam"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Xidmətlər
+                  {t('services')}
                 </Link>
               </li>
-               <li>
+              <li>
                 <Link
                   href="/blog"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-white font-semibold text-base mb-6">Elita</h3>
+            <h3 className="text-white font-semibold text-base mb-6">{t('footer.elita')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/haqqimizda"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Haqqımızda
+                  {t('about')}
                 </Link>
               </li>
               <li>
@@ -164,7 +163,7 @@ const Footer: React.FC = () => {
                   href="/elaqe"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Əlaqə
+                  {t('contact')}
                 </Link>
               </li>
               <li>
@@ -172,7 +171,7 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-300 hover:text-white text-sm transition-colors"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
               </li>
             </ul>
@@ -182,7 +181,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-white/20 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <div className="mb-4 md:mb-0 text-center md:text-left">
-              © Copyright 2025 | Bütün hüquqlar qorunur.
+              {t('footer.copyright')}
             </div>
             <div className="text-center md:text-right">
               <Link
@@ -191,7 +190,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                Markup tərəfindən hazırlanıb.
+                {t('footer.made_by')}
               </Link>
             </div>
           </div>

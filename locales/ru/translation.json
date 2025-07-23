@@ -11,11 +11,17 @@
   },
   "about": "О нас",
   "contact": "Контакты",
-  "faq": "Частые вопросы",
+  "blog": "Блог",
   "design": "Дизайн",
   "repair_construction": "Ремонт и Строительство",
   "furniture": "Мебель",
   "bath_accessories": "Аксессуары для ванной",
+  "services": "Услуги",
+  "footer": {
+    "elita": "Элита",
+    "copyright": "© Copyright 2025 | Все права защищены.",
+    "made_by": "Сделано Markup Agency"
+  },
   "no_results_for": "Нет результатов для",
   "no_products_found": "Ни одного продукта не найдено",
   "try_another_search_term_or_change_filters": "Попробуйте другой поисковый запрос или измените фильтры.",
@@ -44,7 +50,6 @@
   "enter_phone_number": "Введите ваш номер телефона",
   "sending": "Отправка...",
   "send": "Отправить",
-  "services": "Услуги",
   "contactDetails": {
     "whatsapp": "Связь через WhatsApp",
     "contact_us": "Связаться с нами",

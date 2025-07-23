@@ -11,11 +11,17 @@
   },
   "about": "About Us",
   "contact": "Contact",
-  "faq": "FAQ",
+  "blog": "Blog",
   "design": "Design",
   "repair_construction": "Construction",
   "furniture": "Furniture",
   "bath_accessories": "Bath Accessories",
+  "services": "Services",
+  "footer": {
+    "elita": "Elita",
+    "copyright": "© Copyright 2025 | All rights reserved.",
+    "made_by": "Made by Markup Agency"
+  },
   "no_results_for": "No results found for",
   "no_products_found": "No products found",
   "try_another_search_term_or_change_filters": "Try another search term or change the filters.",
@@ -44,7 +50,6 @@
   "enter_phone_number": "Enter your phone number",
   "sending": "Sending...",
   "send": "Send",
-  "services": "Services",
   "contactDetails": {
     "whatsapp": "Contact via WhatsApp",
     "contact_us": "Contact Us",
