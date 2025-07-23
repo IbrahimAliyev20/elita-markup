@@ -83,7 +83,7 @@ function AboutSection({ information }: AboutSectionProps) {
 
   return (
     <div>
-      <div className="sticky top-10 md:top-20 z-40 bg-white shadow-sm border-b border-gray-100 py-4 mb-8">
+      <div className="sticky top-10 md:top-20 z-40 bg-white  py-4 mb-8">
         <div className="flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide md:flex-wrap md:overflow-visible md:whitespace-normal">
           {uniqueTitles.map((title) => (
             <button
