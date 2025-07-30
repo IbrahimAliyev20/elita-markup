@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -135,12 +136,12 @@ function AboutSection({ information }: AboutSectionProps) {
 
               {pathname === "/mebel" && (
                 <div className="flex w-full justify-end mt-8 ">
-                  {/* <Link
+                  <Link
                     href="/gallery"
                     className="items-center justify-center py-2 px-4 bg-[#5A635C] text-white"
                   >
                     Qalereyaya keçid et
-                  </Link> */}
+                  </Link>
                 </div>
               )}
             </div>
