@@ -1,20 +1,14 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 interface GalleryCardProps {
   title: string;
   imageUrl: string;
-  categorySlug: string;
-  itemSlug: string;
 }
 
-export function GalleryCard({ title, imageUrl, categorySlug, itemSlug }: GalleryCardProps) {
+export function GalleryCard({ title, imageUrl, }: GalleryCardProps) {
   return (
-    <Link
-      href={`/gallery/${categorySlug}/${itemSlug}`}
-      className="block group"
-    >
+ 
       <div className="relative overflow-hidden rounded-md h-[377px]">
         <Image
           width={400}
@@ -27,6 +21,5 @@ export function GalleryCard({ title, imageUrl, categorySlug, itemSlug }: Gallery
           <h3 className="text-black text-base font-medium">{title}</h3>
         </div>
       </div>
-    </Link>
   );
 }

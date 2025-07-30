@@ -47,4 +47,11 @@ export const API_ENDPOINTS = {
     LIST: "/contact",
     POST: "/contact-form",
   },
+  GALLERY: {
+    LIST: "/galleries",
+    DETAIL: (slug: string) => `/gallery/${slug}`,
+  },
+  INSTAGRAM: {
+    LIST: "/instagram-links",
+  },
 };

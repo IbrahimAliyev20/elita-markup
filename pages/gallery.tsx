@@ -1,17 +1,18 @@
-
 import React from "react";
+import { GetServerSideProps, NextPage } from "next";
+
 import Breadcrumb from "@/src/components/layout/Breadcrumb";
 import Container from "@/src/components/layout/Container";
 import Footer from "@/src/components/layout/Footer";
 import Header from "@/src/components/layout/Header";
 import Image from "next/image";
 import { GalleryCardList } from "@/src/components/GaleryPage/GaleryCardlist";
-import { GetServerSideProps, NextPage } from "next";
-import { IntroServiceData } from "@/src/types";
-import { fetchIntroCategories } from "./api/services/fetchIntroCategories";
+
+import { GalleryCategory } from "@/src/types";
+import { getGallery } from "./api/services/gallery";
 
 interface GalleryPageProps {
-  categories: IntroServiceData[];
+  categories: GalleryCategory[];
 }
 
 const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
@@ -24,10 +25,10 @@ const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
       <div>
         <div className="relative w-full h-[300px] md:h-[620px] bg-gray-200">
           <Image
-            width={1920} 
+            width={1920}
             height={620}
             priority
-            src="/images/logo/galeryhero.jpg" 
+            src="/images/logo/galeryhero.jpg"
             alt="Qalereya başlığı"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -44,18 +45,18 @@ const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
           <GalleryCardList categories={categories} />
         </div>
       </Container>
-        <Footer />
+      <Footer />
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const allCategories = await fetchIntroCategories();
+    const lang = context.locale || "az";
 
-    const mebelCategory = allCategories.find(category => category.slug === 'mebel');
+    const response = await getGallery(lang);
 
-    const categoriesToShow = mebelCategory ? [mebelCategory] : [];
+    const categoriesToShow = response.data;
 
     return {
       props: {
@@ -63,10 +64,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     };
   } catch (error) {
-    console.error("Gallery page data fetch/filter error:", error);
+    console.error("Gallery page data fetch error:", error);
     return {
       props: {
-        categories: [], 
+        categories: [],
       },
     };
   }

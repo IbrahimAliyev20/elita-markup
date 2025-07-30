@@ -304,12 +304,10 @@ export interface Color {
   updated_at?: string;
 }
 
-// API response structure for colors
 export interface ColorsApiResponse {
   success: boolean;
   message: string;
   data: Color[];
-  // Optional fields that might come from your API
   meta?: {
     current_page: number;
     total_pages: number;
@@ -409,4 +407,103 @@ export interface BreadcrumbItem {
 
 export interface BreadcrumbsApiResponse {
   data: BreadcrumbItem[];
+}
+
+
+
+//////////////////////
+
+
+
+export  interface MetaLink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+export  interface PaginationLinks {
+  first: string | null;
+  last: string | null;
+  prev: string | null;
+  next: string | null;
+}
+
+export  interface PaginationMeta {
+  current_page: number;
+  from: number;
+  last_page: number;
+  links: MetaLink[];
+  path: string;
+  per_page: number;
+  to: number;
+  total: number;
+}
+
+export  interface GalleryCategory {
+  title: string;
+  slug: string;
+  image: string; 
+  thumb_image: string; 
+}
+
+export  interface GalleriesApiResponse {
+  data: GalleryCategory[];
+  links: PaginationLinks;
+  meta: PaginationMeta;
+}
+
+
+
+export interface GalleryItem {
+  category: string;
+  cover: string;       
+  thumb_cover: string; 
+  before: string;      
+  thumb_before: string;
+  after: string;       
+  thumb_after: string; 
+}
+
+export interface GalleryDetailApiResponse {
+  timestamp: string; 
+  status: boolean;
+  message: string;
+  lang: string;
+  data: GalleryItem[];
+}
+
+
+export interface InstagramLink {
+  link: string;
+}
+
+
+export interface MetaLink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+export interface PaginationLinks {
+  first: string | null;
+  last: string | null;
+  prev: string | null;
+  next: string | null;
+}
+
+export interface PaginationMeta {
+  current_page: number;
+  from: number;
+  last_page: number;
+  links: MetaLink[];
+  path: string;
+  per_page: number;
+  to: number;
+  total: number;
+}
+
+export interface InstagramLinksApiResponse {
+  data: InstagramLink[];
+  links: PaginationLinks;
+  meta: PaginationMeta;
 }

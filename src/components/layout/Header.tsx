@@ -27,7 +27,7 @@ function Header({ activeItem = "" }) {
     { id: "about", label: t("about"), href: "/haqqimizda" },
     { id: "contact", label: t("contact"), href: "/elaqe" },
     { id: "blog", label: "Bloq", href: "/blog" },
-    // { id: "gallery", label: "Qalereya", href: "/gallery" },
+    { id: "gallery", label: "Qalereya", href: "/gallery" },
   ];
 
   useEffect(() => {
@@ -47,10 +47,9 @@ function Header({ activeItem = "" }) {
 
   const handleSidebarOpen = () => {
     setIsMenuOpen(true);
-    // Add a small delay to ensure the component is mounted before triggering the transition
     setTimeout(() => {
       setIsSidebarVisible(true);
-    }, 50); // Small delay for smooth opening
+    }, 50); 
   };
 
   const handleSidebarClose = () => {
