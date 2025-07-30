@@ -69,8 +69,8 @@ function AboutSection({ information }: AboutSectionProps) {
   const handleScrollToSection = (title: string) => {
     const index = information.findIndex((item) => item.title === title);
     if (index !== -1 && sectionRefs.current[index]) {
-      const navbarHeight = 64; // Typical navbar height (adjust if needed)
-      const stickyHeaderHeight = 100; // Height of sticky buttons container
+      const navbarHeight = 64; 
+      const stickyHeaderHeight = 100; 
       const totalOffset = navbarHeight + stickyHeaderHeight;
       const elementPosition = sectionRefs.current[index]?.offsetTop || 0;
       const offsetPosition = elementPosition - totalOffset;

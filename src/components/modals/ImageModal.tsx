@@ -45,7 +45,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
           secondImage={afterImage}
           firstImageClassName="object-contain object-center"
           secondImageClassname="object-contain object-center"
-          className="h-[537px] w-full"
+          className="h-[540px] w-[900px]"
           slideMode="hover"
         />
       </div>
