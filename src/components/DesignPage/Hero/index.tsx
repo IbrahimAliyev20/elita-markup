@@ -43,7 +43,7 @@ function Hero({ title, image, video }: HeroProps) {
 
       <div className="flex flex-col md:flex-row md:justify-between md:items-start relative z-30">
         <div className="flex items-center justify-center w-full">
-          <h1 className="text-3xl md:text-[80px] w-[200px] md:w-[600px] text-white bg-[#545C56] font-archivo opacity-90 px-4 md:px-16  py-6  whitespace-nowrap">
+          <h1 className="text-3xl md:text-[80px] w-[200px] md:min-w-[600px]  md:w-fit text-white bg-[#545C56] font-archivo opacity-90 px-4 md:px-16  py-6  whitespace-nowrap">
             {title}
           </h1>
         </div>
