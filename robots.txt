@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.elita.az/sitemap.xml
-Robots: https://www.elita.az/robots.txt
