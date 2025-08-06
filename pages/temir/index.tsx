@@ -19,6 +19,7 @@ interface InformationItem {
   thumb_image_1: string;
   thumb_image_2: string;
   thumb_image_3: string;
+  gallery_link?: string | null;
 }
 
 interface ConstructionProps {
@@ -58,6 +59,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const lang = context.locale || "az";
   try {
     const slug = "temir-tikinti";
+
     const bannerData = await getBanner(slug, lang);
 
     return {
@@ -75,7 +77,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
           video: "",
           description: "",
           information: [],
-        }, // Default empty state
+        },
       },
     };
   }

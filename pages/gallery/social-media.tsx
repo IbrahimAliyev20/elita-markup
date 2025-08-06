@@ -25,11 +25,11 @@ const SocialMediaPage: NextPage<SocialMediaPageProps> = ({ posts }) => {
               Heç bir Instagram postu tapılmadı.
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-10">
+            <div className="grid grid-cols-1 h-full sm:grid-cols-2 md:grid-cols-3 gap-8 py-10">
               {posts.map((post, index) => (
                 <div
                   key={index}
-                  className="w-full h-[350px] mx-auto rounded-lg overflow-hidden shadow-lg"
+                  className="w-full h-[600px] mx-auto rounded-lg overflow-hidden shadow-lg"
                 >
                   <iframe
                     src={`${post.link}embed`} 

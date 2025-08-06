@@ -19,6 +19,7 @@ interface InformationItem {
   thumb_image_1: string;
   thumb_image_2: string;
   thumb_image_3: string;
+  gallery_link?: string | null;
 }
 
 interface ConstructionProps {
@@ -42,7 +43,6 @@ function Construction({ bannerData }: ConstructionProps) {
         title={bannerData.title}
         image={bannerData.image}
         video={bannerData.video}
-        // description={bannerData.description}
       />
 
       <Container>
@@ -59,6 +59,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const lang = context.locale || "az";
   try {
     const slug = "mebel";
+    
     const bannerData = await getBanner(slug, lang);
 
     return {

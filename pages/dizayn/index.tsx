@@ -1,4 +1,3 @@
-// pages/design.tsx
 import Hero from "@/src/components/DesignPage/Hero";
 import Container from "@/src/components/layout/Container";
 import Header from "@/src/components/layout/Header";
@@ -15,6 +14,7 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { fetchIntroCategories } from "../api/services/fetchIntroCategories";
 
+// Tip tərifini yeniləyirik
 interface InformationItem {
   title: string;
   description: string;
@@ -24,8 +24,10 @@ interface InformationItem {
   thumb_image_1: string;
   thumb_image_2: string;
   thumb_image_3: string;
+  gallery_link?: string | null; 
 }
 
+// Prop-lardan galleryCategories çıxarılır
 interface DesignPageProps {
   services: ServiceData[];
   bannerData: BannerItem & {
@@ -34,6 +36,7 @@ interface DesignPageProps {
   categories: Category[];
 }
 
+// Componentin parametrindən galleryCategories çıxarılır
 function Design({ services, bannerData, categories }: DesignPageProps) {
   const { t } = useTranslation();
   return (
@@ -49,10 +52,10 @@ function Design({ services, bannerData, categories }: DesignPageProps) {
         title={bannerData.title}
         image={bannerData.image}
         video={bannerData.video}
-        // description={bannerData.description}
       />
 
       <Container>
+        {/* AboutSection-a artıq yalnız "information" ötürülür */}
         <AboutSection information={bannerData.information} />
       </Container>
       <Container>
@@ -70,9 +73,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const lang = context.locale || "az";
   try {
     const slug = "dizayn";
-    const services = await fetchServices(lang);
-    const bannerData = await getBanner(slug, lang);
-    const categories = await fetchIntroCategories(lang);
+
+    // getGallery sorğusu ləğv edilir
+    const [services, bannerData, categories] = await Promise.all([
+      fetchServices(lang),
+      getBanner(slug, lang),
+      fetchIntroCategories(lang),
+    ]);
+
     return {
       props: {
         services,
@@ -81,7 +89,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     };
   } catch (error) {
-    console.error("Error fetching services:", error);
+    console.error("Error fetching data for Design page:", error);
     return {
       props: {
         services: [],

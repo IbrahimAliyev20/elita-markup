@@ -221,6 +221,7 @@ export interface IntroServiceInformation {
   thumb_image_1: string;
   thumb_image_2: string;
   thumb_image_3: string;
+  gallery_link?: string | null;
 }
 
 export interface IntroServiceData {
@@ -239,11 +240,16 @@ export interface IntroServicesApiResponse {
 }
 
 export interface InformationItem {
-  // Define the actual structure based on your data
   id?: string | number;
   title?: string;
   description?: string;
-  // Add other properties as needed
+  image_1?: string;
+  image_2?: string;
+  image_3?: string;
+  thumb_image_1?: string;
+  thumb_image_2?: string;
+  thumb_image_3?: string;
+  gallery_link?: string | null;
 }
 
 // types.ts (add these types)
