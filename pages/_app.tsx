@@ -8,14 +8,14 @@ import Spinner from "../src/components/layout/Spinner";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleRouteChangeStart = (url: string) => {
-      if (url !== router.asPath) {
-        setLoading(true);
-      }
-    };
+  const handleRouteChangeStart = (url: string) => {
+  if (url !== router.asPath) {
+    setLoading(true);
+  }
+};
 
     const handleRouteChangeEnd = () => {
       setLoading(false);
@@ -31,6 +31,19 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeError", handleRouteChangeEnd);
     };
   }, [router]);
+
+  useEffect(() => {
+   const handleContextMenu = (e: MouseEvent) => {
+  if (e.target && (e.target as HTMLElement).nodeName === "IMG") {
+    e.preventDefault();
+  }
+};
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
 
   return (
     <>

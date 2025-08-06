@@ -13,8 +13,8 @@ function Header({ activeItem = "" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const menuIconRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuIconRef = useRef < HTMLDivElement > (null);
+  const mobileMenuRef = useRef < HTMLDivElement > (null);
 
   const menuItems = [
     { id: "dizayn", label: t("design"), href: "/dizayn" },
@@ -45,11 +45,23 @@ function Header({ activeItem = "" }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen || isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen, isMobileMenuOpen]); 
+
   const handleSidebarOpen = () => {
     setIsMenuOpen(true);
     setTimeout(() => {
       setIsSidebarVisible(true);
-    }, 50); 
+    }, 50);
   };
 
   const handleSidebarClose = () => {
@@ -217,7 +229,7 @@ function Header({ activeItem = "" }) {
             onClick={handleSidebarClose}
           />
 
-          <div className="absolute inset-y-0 right-0 flex max-w-full pl-10 font-archivo">
+          <div className="absolute inset-y-0 right-0 flex max-w-full pl-10 font-archivo ">
             <div
               className={`relative w-screen max-w-[300px] transform transition-all duration-500 ease-out ${
                 isSidebarVisible ? "translate-x-0" : "translate-x-full"

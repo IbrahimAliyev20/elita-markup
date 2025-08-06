@@ -507,3 +507,17 @@ export interface InstagramLinksApiResponse {
   links: PaginationLinks;
   meta: PaginationMeta;
 }
+
+
+
+////////////////
+
+export  interface SocialMedia {
+  name: string;
+  link: string;
+  image: string;
+  thumb_image: string;
+}
+export interface SocialMediaApiResponse {
+  data: SocialMedia[];
+}

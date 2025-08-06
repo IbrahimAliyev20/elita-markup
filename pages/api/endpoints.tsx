@@ -54,4 +54,7 @@ export const API_ENDPOINTS = {
   INSTAGRAM: {
     LIST: "/instagram-links",
   },
-};
+  SOCIAL_MEDIA: {
+    LIST: "/sosial-media",
+  },
+}
