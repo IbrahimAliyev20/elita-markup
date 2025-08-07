@@ -10,12 +10,14 @@ import { GalleryCardList } from "@/src/components/GaleryPage/GaleryCardlist";
 
 import { GalleryCategory } from "@/src/types";
 import { getGallery } from "./api/services/gallery";
+import { useTranslation } from "react-i18next";
 
 interface GalleryPageProps {
   categories: GalleryCategory[];
 }
 
 const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Container>
@@ -35,7 +37,7 @@ const Galery: NextPage<GalleryPageProps> = ({ categories }) => {
           <div className="absolute inset-0 bg-black/25"></div>
           <div className="relative z-10 flex items-center justify-center h-full">
             <h1 className="text-white font-archivo text-5xl md:text-8xl font-normal">
-              Qalereya
+              {t("gallery")}
             </h1>
           </div>
         </div>

@@ -1,4 +1,3 @@
-// src/api/services/categoryServices.ts
 import { Category, CategoriesApiResponse } from "@/src/types";
 import { API_ENDPOINTS } from "../endpoints";
 

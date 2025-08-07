@@ -26,8 +26,8 @@ function Header({ activeItem = "" }) {
   const dropdownItems = [
     { id: "about", label: t("about"), href: "/haqqimizda" },
     { id: "contact", label: t("contact"), href: "/elaqe" },
-    { id: "blog", label: "Bloq", href: "/blog" },
-    { id: "gallery", label: "Qalereya", href: "/gallery" },
+    { id: "blog", label: t("blog"), href: "/blog" },
+    { id: "gallery", label: t("gallery"), href: "/gallery" },
   ];
 
   useEffect(() => {

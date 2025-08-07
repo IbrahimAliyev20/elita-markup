@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // YENİ: useEffect import edildi
 import { FiSearch } from "react-icons/fi";
 import FilterModal from "./FilterModal";
 import { Category, Brand, Color } from "@/src/types";
@@ -26,6 +26,22 @@ function Filter({
 }: FilterProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
+
+  // YENİ: Scroll-u dayandırmaq üçün effekt
+  useEffect(() => {
+    if (isModalOpen) {
+      // Modal açıqdırsa, body-ə 'overflow: hidden' stili verərək scroll-u dayandır
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Modal bağlıdırsa, body-nin scroll-unu standart vəziyyətə qaytar
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cleanup funksiyası: Komponent "unmount" olanda scroll-u bərpa et
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isModalOpen]); // Bu effekt yalnız isModalOpen dəyişəndə işə düşəcək
 
   // Updated to use category slug instead of name
   const handleCategoryClick = (categorySlug: string) => {
@@ -64,13 +80,11 @@ function Filter({
           </button>
 
           {categories.map((category) => {
-            // Check if category slug is in the active filters (not name)
             const isActive = filters.categories.includes(category.slug || category.name);
             
             return (
               <button
                 key={category.id}
-                // Send category slug (or fallback to name if slug doesn't exist)
                 onClick={() => handleCategoryClick(category.slug || category.name)}
                 className={`p-2 py-2.5 flex items-center text-sm border whitespace-nowrap transition-colors duration-300 ${
                   isActive
@@ -78,7 +92,6 @@ function Filter({
                     : "text-neutral-800 border-neutral-800 hover:bg-neutral-800 hover:text-white"
                 }`}
               >
-                {/* Still display the category name to user */}
                 {category.name.length > 12 ? (
                   <>
                     <span className="hidden sm:inline">{category.name}</span>

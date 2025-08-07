@@ -127,6 +127,7 @@ export interface ContactData {
   phone: string;
   map: string; 
   email: string;
+  favicon: string;
 }
 
 export interface ContactApiResponse {

@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
 interface BreadcrumbProps {
-  title?: string; 
-  parentTitle?: string; 
+  title?: string;
+  parentTitle?: string;
 }
 
 function Breadcrumb({ title, parentTitle }: BreadcrumbProps) {
@@ -23,6 +23,8 @@ function Breadcrumb({ title, parentTitle }: BreadcrumbProps) {
     dizayn: t("design"),
     hamam: t("bath_accessories"),
     brendler: t("brands"),
+    gallery: t("gallery"),
+    blog: t("blog"),
   };
 
   const isBrendlerPage = pathSegments[0] === "brendler";
@@ -84,7 +86,9 @@ function Breadcrumb({ title, parentTitle }: BreadcrumbProps) {
         <React.Fragment key={idx}>
           {item.isLast ? (
             <span className="font-manrope text-base font-normal leading-6 text-amber-700">
-              {item.displayName}
+              {item.displayName &&
+                item.displayName.charAt(0).toUpperCase() +
+                  item.displayName.slice(1)}
             </span>
           ) : (
             <>

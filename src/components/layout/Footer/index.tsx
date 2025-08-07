@@ -9,9 +9,11 @@ import { getSocialMedia } from "@/pages/api/services/fetchSocialMedia";
 import { Category, IntroServiceData, SocialMedia } from "@/src/types";
 import { fetchCategories } from "@/pages/api/services/fetchCategories";
 import { fetchIntroCategories } from "@/pages/api/services/fetchIntroCategories";
+import { useRouter } from "next/router";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const {locale} = useRouter()
   const [socialmedia, setSocialMedia] = useState<SocialMedia[]>([]);
   const [categoryproduct, setCategoryProduct] = useState<Category[]>([]);
   const [category, setCategory] = useState<IntroServiceData[]>([]);
@@ -19,7 +21,7 @@ export default function Footer() {
   useEffect(() => {
     const fetchProductCategoryData = async () => {
       try {
-        const data = await fetchCategories();
+        const data = await fetchCategories(locale);
         if (data) {
           setCategoryProduct(data);
         }
@@ -29,12 +31,12 @@ export default function Footer() {
       }
     };
     fetchProductCategoryData();
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const fetchSocialData = async () => {
       try {
-        const data = await getSocialMedia();
+        const data = await getSocialMedia(locale);
         if (data) {
           setSocialMedia(data);
         }
@@ -44,12 +46,12 @@ export default function Footer() {
       }
     };
     fetchSocialData();
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const fetchCategoryData = async () => {
       try {
-        const data = await fetchIntroCategories();
+        const data = await fetchIntroCategories(locale);
         if (data) {
           setCategory(data);
         }
@@ -59,8 +61,7 @@ export default function Footer() {
       }
     };
     fetchCategoryData();
-  }, []);
-
+  },  [locale]);
  
   return (
     <footer className="bg-[#545C56] text-white pt-12 pb-8">
@@ -102,7 +103,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {category
-                .find((cat) => cat.slug === "dizayn")
+                .find((cat) => cat.slug === "dizayn" || cat.slug === "design"|| cat.slug === "dizain")
                 ?.information.map((info) => (
                   <li key={info.title}>
                     <Link
@@ -122,7 +123,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {category
-                .find((cat) => cat.slug === "temir-tikinti") 
+                .find((cat) => cat.slug === "temir-tikinti" || cat.slug === "remont-i-stroitelstvo"|| cat.slug === "repair-sonstruction") 
                 ?.information.map((info) => (
                   <li key={info.title}>
                     <Link
@@ -142,7 +143,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {category
-                .find((cat) => cat.slug === "mebel")
+                .find((cat) => cat.slug === "mebel" || cat.slug === "furniture"|| cat.slug === "mebel-1")
                 ?.information.map((info) => (
                   <li key={info.title}>
                     <Link

@@ -1,7 +1,7 @@
 import Hero from "@/src/components/DesignPage/Hero";
 import Container from "@/src/components/layout/Container";
 import Header from "@/src/components/layout/Header";
-import React from "react";
+import React, { useRef } from "react"; // useRef import edildi
 import AboutSection from "@/src/components/DesignPage/AboutSection";
 import Footer from "@/src/components/layout/Footer";
 import { getBanner } from "../api/services/fetchBanner";
@@ -30,9 +30,11 @@ interface ConstructionProps {
 
 function Construction({ bannerData }: ConstructionProps) {
   const { t } = useTranslation();
+  const servicesContainerRef = useRef<HTMLDivElement>(null); // ref yaradıldı
+
   return (
     <>
-       <Head>
+      <Head>
         <meta name="author" content="https://markup.az/" />
         <title>{"Elita Group | " + t("contactDetails.repair_construction")}</title>
       </Head>
@@ -46,9 +48,16 @@ function Construction({ bannerData }: ConstructionProps) {
       />
 
       <Container>
-        <AboutSection information={bannerData.information} />
+        <AboutSection
+          information={bannerData.information}
+          servicesContainerRef={servicesContainerRef} // ref ötürüldü
+        />
       </Container>
-        <Footer />
+
+      {/* Ref-i bir elementə bağlayırıq */}
+      <div ref={servicesContainerRef}></div>
+
+      <Footer />
     </>
   );
 }
@@ -68,7 +77,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     };
   } catch (error) {
-    console.error("Error fetching banner data:", error);
+    console.error("Error fetching banner data for temir:", error);
     return {
       props: {
         bannerData: {

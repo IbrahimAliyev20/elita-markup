@@ -28,7 +28,7 @@ const GalleryDetailPage: NextPage<GalleryDetailPageProps> = ({ galleryItems }) =
   }
 
   const categoryTitle = galleryItems[0].category ;
-
+  console.log(galleryItems)
   return (
     <>
       <Container>
@@ -75,26 +75,26 @@ const GalleryDetailPage: NextPage<GalleryDetailPageProps> = ({ galleryItems }) =
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const { slug  } = context.params as { slug : string };
-    const lang = context.locale || 'az';
+    const { slug } = context.params as { slug: string };
+    const lang = context.locale || 'en';
 
-    const response = await getGalleryBySlug(slug , lang);
+    console.log(` slug: '${slug}', lang: '${lang}' `);
+
+    const response = await getGalleryBySlug(slug, lang);
+
+    console.log(" Data:", JSON.stringify(response.data, null, 2));
 
     return {
       props: {
-        galleryItems: response.data || [], 
+        galleryItems: response.data || [],
       },
-      
     };
-    
   } catch (error) {
     console.error("Single gallery detail fetch error:", error);
     return {
-      props: { galleryItems: [] }, 
+      props: { galleryItems: [] },
     };
-    
   }
-  
 };
 
 export default GalleryDetailPage;

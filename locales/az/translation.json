@@ -12,9 +12,11 @@
   "about": "Haqqımızda",
   "contact": "Əlaqə",
   "blog": "Blog",
+  "gallery": "Qalereya",
   "faq": {
     "title": "Tez-tez soruşulan suallar"
   },
+  "gallery_button":"Qalereyaya keçid et",
   "design": "Dizayn",
   "repair_construction": "Təmir və Tikinti",
   "furniture": "Mebel",
@@ -44,7 +46,7 @@
   "contact_error_send": "Göndərilmə zamanı xəta baş verdi",
   "error_try_again": "Xəta baş verdi, zəhmət olmasa yenidən cəhd edin",
   "no_contact_info": "Əlaqə məlumatı mövcud deyil.",
-  "how_can_we_help": "Size necə kömək edə bilərik?",
+  "how_can_we_help": "Sizə necə kömək edə bilərik?",
   "first_name": "Adınız",
   "last_name": "Soyadınız",
   "enter_first_name": "Adınızı daxil edin",

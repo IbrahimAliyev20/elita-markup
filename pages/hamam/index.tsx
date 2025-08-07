@@ -76,13 +76,11 @@ function Bathroom({
     const lastFilters = lastAppliedFiltersRef.current;
     if (lastFilters && 
         JSON.stringify(lastFilters) === JSON.stringify(newFilters)) {
-      console.log("Filters unchanged, skipping API call");
       return;
     }
 
     // Prevent multiple simultaneous calls
     if (isProcessingRef.current) {
-      console.log("Already processing, skipping...");
       return;
     }
 
@@ -90,7 +88,6 @@ function Bathroom({
     setLoading(true);
     lastAppliedFiltersRef.current = newFilters;
 
-    console.log("Applying filters:", newFilters);
 
     try {
       if (
@@ -134,8 +131,7 @@ function Bathroom({
         setProducts(response.data);
       }
     } catch (error) {
-      console.error("Error applying filters:", error);
-      // Reset last applied filters on error so retry is possible
+      console.log(error)
       lastAppliedFiltersRef.current = null;
     } finally {
       setLoading(false);
@@ -144,7 +140,6 @@ function Bathroom({
   }, [currentLang]);
 
   const handleFilterChange = useCallback((newFilters: FilterState) => {
-    console.log("Filter change triggered:", newFilters);
     setFilters(newFilters);
     applyFilters(newFilters);
   }, [applyFilters]);
@@ -156,7 +151,6 @@ function Bathroom({
       colors: [],
       search: "",
     };
-    console.log("Clearing all filters");
     
     // Clear any pending search timeout
     if (searchTimeoutRef.current) {
@@ -165,47 +159,37 @@ function Bathroom({
     
     setFilters(emptyFilters);
     setHasSearched(false);
-    lastAppliedFiltersRef.current = null; // Reset tracking
+    lastAppliedFiltersRef.current = null; 
     applyFilters(emptyFilters);
   }, [applyFilters]);
 
   const onSearchChange = useCallback((term: string) => {
-    console.log("Search change triggered:", term);
     
-    // Clear existing timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
     }
     
-    // Debounce the API call
     searchTimeoutRef.current = setTimeout(() => {
       const updatedFilters: FilterState = {
         ...filters,
         search: term,
       };
       
-      // Update filters and apply them
       setFilters(updatedFilters);
       applyFilters(updatedFilters);
-    }, 100); // 300ms debounce
+    }, 100); 
   }, [applyFilters, filters]);
 
-  // Handle language changes by redirecting to reload the page with new data
   const prevLangRef = useRef(currentLang);
   useEffect(() => {
     if (prevLangRef.current !== currentLang) {
       prevLangRef.current = currentLang;
-      // When language changes, reload the page to get fresh SSR data
       router.reload();
     }
   }, [currentLang, router]);
 
-  // Debug: Log when component re-renders
-  useEffect(() => {
-    console.log("Component re-rendered. Products count:", products.length, "Loading:", loading);
-  });
 
-  // Cleanup timeout on unmount
+
   useEffect(() => {
     return () => {
       if (searchTimeoutRef.current) {
@@ -214,7 +198,6 @@ function Bathroom({
     };
   }, []);
 
-  console.log(products);
 
   return (
     <>
